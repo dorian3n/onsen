@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  hot_spring_id: 1
+  nickname: MyString
+  rate: MyString
+  comment: MyText
+
+two:
+  user_id: 1
+  hot_spring_id: 1
+  nickname: MyString
+  rate: MyString
+  comment: MyText

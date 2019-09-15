@@ -1,0 +1,2 @@
+module HotSpringHelper
+end

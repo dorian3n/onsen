@@ -1,0 +1,2 @@
+class HotSpringController < ApplicationController
+end

@@ -1,0 +1,55 @@
+<%# ユーザ登録画面 %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+
+      <div class="form-user style-1 rounded has-shadow-1">
+        <div class="form-header text-center">
+          <h2 class="form-header-title">新規登録</h2>
+        </div>
+
+        <div class="form-body">
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= render "devise/shared/error_messages", resource: resource %>
+
+            <div class="form-group has-icon col-md-6 col-md-offset-3">
+              <div class="item-form"><%= f.label :ユーザー名 %>
+                <em>※必須項目</em>
+              </div>
+                <%= f.text_field :name, :size=>"35", autofocus: true, class:"form-inline", placeholder:"(英数)" %>
+            </div>
+
+            <div class="form-group has-icon col-md-6 col-md-offset-3">
+              <div class="item-form"><%= f.label :メールアドレス %>
+                <em>※必須項目</em>
+              </div>
+              <%= f.email_field :email, :size=>"35", autofocus: true %>
+            </div>
+
+            <div class="form-group has-icon col-md-6 col-md-offset-3">
+              <div class="item-form"><%= f.label :パスワード %>
+                <em>※必須項目</em>
+              </div>
+              <%= f.password_field :password, :size=>"35", placeholder:"英数字６文字以上" %>
+            </div>
+
+            <div class="form-group has-icon col-md-6 col-md-offset-3">
+              <div class="item-form"><%= f.label :パスワード確認 %>
+                <em>※必須項目</em>
+              </div>
+              <%= f.password_field :password_confirmation, :size=>"35", placeholder:"英数字６文字以上" %>
+            </div>
+
+            <div class="form-group has-icon col-md-6 col-md-offset-3 text-center">
+              <%= f.submit "新規登録", class:"btn btn-primary btn-lg" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+           
