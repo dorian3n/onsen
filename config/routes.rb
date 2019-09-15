@@ -1,5 +1,21 @@
 Rails.application.routes.draw do
   
+  get 'follows/create'
+  get 'follows/destroy'
+  get 'comments/create'
+  get 'comments/destroy'
+  get 'comments/update'
+  get 'bookmarks/index'
+  get 'bookmarks/create'
+  get 'bookmarks/destroy'
+  get 'prefectures/new'
+  get 'prefectures/index'
+  get 'hot_springs/new'
+  get 'hot_springs/show'
+  get 'hot_springs/index'
+  get 'hot_springs/edit'
+  get 'hot_springs/destroy'
+  get 'hot_springs/update'
   devise_for :users, controllers: {
     sessions:      'users/sessions',
     passwords:     'users/passwords',
