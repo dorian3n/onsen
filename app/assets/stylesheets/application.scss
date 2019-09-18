@@ -26,6 +26,29 @@
 
 .clearfix::after{
 	content:"";
-    display: block;
-    clear: both;
+  display: block;
+  clear: both;
+}
+
+body{
+	background-color:#FDF5E6;
+}
+
+.wrapper{
+	min-height: 100vh;
+	position: relative;
+	padding-bottom: 120px;
+	box-sizing: border-box;
+}
+
+
+// フッター
+footer{
+	width:100%;
+	text-align: center;
+	padding: 20px 0;
+	background-color: #848282;
+	color:white;
+	position: absolute;
+	bottom: 0;
 }

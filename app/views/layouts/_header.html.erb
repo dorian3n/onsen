@@ -1,0 +1,20 @@
+<header class="container-fluid">
+  <div class="row">
+    <div class="col-sm-4 col-sm-offset-4 head-center">
+      <%= link_to root_path, class: "header_link" do %>
+        <h1>日帰り温泉</h1>
+      <% end %>
+    </div>
+
+    <!-- if -->
+    <div class="login-status pull-right">
+      <% if user_signed_in? %>
+        <%= link_to " ログアウト", destroy_user_session_path, method: :delete, class:"header-sublink" %>
+      <!-- else -->
+      <% else %>
+        <%= link_to " 新規登録", new_user_registration_path, class:"header-sublink" %>
+        <%= link_to " ログイン", new_user_session_path, class:"header-sublink" %>
+      <% end %>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,48 @@
+// Place all the styles related to the Items controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+//  ヘッダー
+
+ header {
+  background-color:#FAEBD7;
+  margin-bottom: 20px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 9999;  /* 重なり順指定 */
+}
+
+.head-center {
+  text-align: center;
+  h1 {
+    font-size: 2em;
+    font-family: 'Yu Gothic';
+    text-shadow: 2px 2px 0 #FFD700; 
+    color:#DEB887;
+    &:hover{
+      color:#FF9872;
+      text-decoration: none;
+    }
+  }
+}
+
+.header_link{
+  color: black;
+  &:hover{
+    text-decoration: none;
+  }
+}
+
+
+.login-status{
+  margin-top:10px;
+  margin-right: 10px;
+  .header-sublink{
+    color:black;
+    &:hover{
+      text-decoration: none;
+      color:blue;
+    }
+  }
+}
