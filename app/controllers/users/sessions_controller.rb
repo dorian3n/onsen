@@ -23,7 +23,7 @@ class Users::SessionsController < Devise::SessionsController
     private
     # ログイン後にマイページへ遷移するpathを設定
     def after_sign_in_path_for(resource)
-      user_path(resource)
+      root_path(resource)
     end
 
     # ログアウト後に温泉のインデックスへ遷移するpathを設定

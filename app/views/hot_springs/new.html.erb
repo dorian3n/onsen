@@ -1,2 +1,76 @@
-<h1>HotSprings#new</h1>
-<p>Find me in app/views/hot_springs/new.html.erb</p>
+<%= render "/layouts/menubar"%>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-10 col-sm-offset-1 post_image_box">
+        <h3>温泉投稿フォーム</h3>
+        <div class="box">
+          
+          <%= form_for(@hot_spring, url:hot_springs_path) do |h| %>
+ 
+            <% if @hot_spring.errors.any? %>
+                <%= @hot_spring.errors.count %>件のエラーが発生しました
+                <% @hot_spring.errors.full_messages.each do |message| %>
+                    <%= message %>
+                <% end %>
+            <% end %>
+            <div class="row">
+              <div class="col-sm-3">
+                <%= h.attachment_field :image %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-4">
+                <p>温泉名</p>
+              </div>
+              <div class="col-sm-4">
+                <%= h.text_field :name %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-4">
+                <p>住所</p>
+              </div>
+              <div class="col-sm-8">
+                <%= h.text_field :address, class:"col-sm-12", style:"padding:0;" %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-4">
+                <p>都道府県</p>
+              </div>
+              <div class="col-sm-4">
+                <%= h.text_field :prefecture_id %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-4">
+                <p>値段</p>
+              </div>
+              <div class="col-sm-1">
+                <p>大人</p>
+              </div>
+              <div class="col-sm-2">
+                <%= h.text_field :adult_price %>
+              </div>
+              <div class="col-sm-1">
+                <p>子供</p>
+              </div>
+              <div class="col-sm-2">
+                <%= h.text_field :child_price %>
+              </div>
+            </div>
+
+
+
+
+
+
+            
+
+            <%= h.submit %>
+          <% end %>
+
+        </div>
+      </div>
+    </div>
+  </div>

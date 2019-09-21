@@ -20,28 +20,28 @@
                 <div class="item-form"><%= f.label :ユーザー名 %>
                   <em>※必須項目</em>
                 </div>
-                  <%= f.text_field :name, :size=>"35", autofocus: true, class:"col-md-12", placeholder:"(英数)" %>
+                  <%= f.text_field :name, :size=>"35", autofocus: true, class:"col-md-12 col-xs-12",style:"padding:0;", placeholder:"(英数)" %>
               </div>
 
               <div class="form-group clearfix">
                 <div class="item-form"><%= f.label :メールアドレス %>
                   <em>※必須項目</em>
                 </div>
-                <%= f.email_field :email, :size=>"35", autofocus: true, class:"col-md-12" %>
+                <%= f.email_field :email, :size=>"35", autofocus: true, class:"col-md-12 col-xs-12",style:"padding:0;" %>
               </div>
 
               <div class="form-group clearfix">
                 <div class="item-form"><%= f.label :パスワード %>
                   <em>※必須項目</em>
                 </div>
-                <%= f.password_field :password, :size=>"35", placeholder:"英数字６文字以上", class:"col-md-12" %>
+                <%= f.password_field :password, :size=>"35", placeholder:"英数字６文字以上", class:"col-md-12 col-xs-12",style:"padding:0;" %>
               </div>
 
               <div class="form-group clearfix">
                 <div class="item-form"><%= f.label :パスワード確認 %>
                   <em>※必須項目</em>
                 </div>
-                <%= f.password_field :password_confirmation, :size=>"35", placeholder:"英数字６文字以上", class:"col-md-12 text-box" %>
+                <%= f.password_field :password_confirmation, :size=>"35", placeholder:"英数字６文字以上", class:"col-md-12 col-xs-12 text-box",style:"padding:0;" %>
               </div>
 
               <div class="form-group text-center">

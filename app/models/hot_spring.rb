@@ -5,6 +5,6 @@ class HotSpring < ApplicationRecord
   has_many :bookmarks
   has_many :comments
 
-
+  attachment :image
 
 end

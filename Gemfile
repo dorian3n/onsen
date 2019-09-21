@@ -72,3 +72,5 @@ gem 'jquery-rails'
   # 画像関連gem
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
+  # jQuery
+gem 'jquery-rails'

@@ -41,6 +41,58 @@ body{
 	box-sizing: border-box;
 }
 
+// 背景画像
+.main-image{
+	background-image: url("onsen1.jpg");
+	height: 500px;
+	background-size: cover;
+	background-position: center;
+}
+
+// メニュー
+.nav-main{
+	margin-top:10px;
+	margin-bottom:20px;
+}
+
+li{
+	background-color:#e9967a;
+	&:hover{
+		background-color:black;
+	}
+}
+
+
+.onsen-ranking{
+	color:black;
+	border-left: 1px solid #FFE4C4;
+	border-right: 1px solid #FFE4C4;
+	&:hover{
+		color:#B22222;
+	}
+}
+.user-ranking, .prefectures-search{
+	color:black;
+	border-right: 1px solid #FFE4C4;
+	&:hover{
+		color:#B22222;
+	}
+}
+
+.favorite{
+	color:black;
+	border-right: 1px solid #FFE4C4;
+	&:hover{
+		color:#B22222;
+	}
+}
+
+// .user-ranking{
+// 	color:black;
+// 	&:hover{
+// 		color:#B22222;
+// 	}
+// }
 
 // フッター
 footer{

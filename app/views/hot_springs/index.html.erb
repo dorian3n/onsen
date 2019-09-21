@@ -1,2 +1,35 @@
-<h1>HotSprings#index</h1>
-<p>Find me in app/views/hot_springs/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <%# 背景画像表示 %>
+    <div class="main-image">
+    </div>
+
+    <%# メニューバー %>
+    <%= render "/layouts/menubar"%>
+
+    <h2 style="margin-left:50px;">新着温泉投稿</h2>
+
+    <!--温泉投稿-->
+    <% @hot_springs.each do |h| %>
+      <div class="col-xs-12 col-sm-6">
+        <div class="hot-spring-box">
+          <div class="col-xs-12">
+            <p>総合評価４</p>
+            <!--温泉写真-->
+            <div class="image-box col-xs-5 col-sm-12">
+              <%= attachment_image_tag results, :image, :fill, 200, 200, fallback: "no_image.jpg", :size=>"200x200" %>
+            </div>
+              <%=%>
+            <div class="information col-xs-7 col-sm-12">
+              <!--温泉名-->
+                <p><%= h.name %></p>
+                <p><%=h.address%></p>
+                <p><%=h.business_hours%></p>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
