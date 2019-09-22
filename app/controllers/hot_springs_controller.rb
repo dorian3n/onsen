@@ -29,7 +29,7 @@ class HotSpringsController < ApplicationController
 
   private
   def hot_spring_params
-    params.require(:hot_spring).permit(:prefecture, :name, :address, :business_hours, :type, :price, :rate, :image, :remarks, :review)
+    params.require(:hot_spring).permit(:prefecture_id, :name, :address, :start_time, :ending_time, :type, :price, :rate, :image, :remarks, :review)
   end
 end
 

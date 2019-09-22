@@ -7,4 +7,5 @@ class HotSpring < ApplicationRecord
 
   attachment :image
 
+ 
 end

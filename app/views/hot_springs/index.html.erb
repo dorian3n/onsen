@@ -7,7 +7,7 @@
     <%# メニューバー %>
     <%= render "/layouts/menubar"%>
 
-    <h2 style="margin-left:50px;">新着温泉投稿</h2>
+    <h2 style="margin-left:50px;">新着温泉投稿一覧</h2>
 
     <!--温泉投稿-->
     <% @hot_springs.each do |h| %>
@@ -23,8 +23,9 @@
             <div class="information col-xs-7 col-sm-12">
               <!--温泉名-->
                 <p><%= h.name %></p>
-                <p><%=h.address%></p>
-                <p><%=h.business_hours%></p>
+                <p><%= h.prefecture_id %></p>
+                <p><%= h.address %></p>
+                <p><%= h.start_time %>〜<%= h.ending_time %></p>
 
             </div>
           </div>

@@ -5,7 +5,7 @@
         <h3>温泉投稿フォーム</h3>
         <div class="box">
           
-          <%= form_for(@hot_spring, url:hot_springs_path) do |h| %>
+          <%= form_for(@hot_spring, url:hot_springs_path) do |f| %>
  
             <% if @hot_spring.errors.any? %>
                 <%= @hot_spring.errors.count %>件のエラーが発生しました
@@ -15,50 +15,114 @@
             <% end %>
             <div class="row">
               <div class="col-sm-3">
-                <%= h.attachment_field :image %>
+                <%= f.attachment_field :image %>
               </div>
             </div>
+            <%# 温泉名 %>
             <div class="row">
-              <div class="col-sm-4">
+              <div class="col-sm-3">
                 <p>温泉名</p>
               </div>
               <div class="col-sm-4">
-                <%= h.text_field :name %>
+                <%= f.text_field :name %>
               </div>
             </div>
+            <%# 住所 %>
             <div class="row">
-              <div class="col-sm-4">
+              <div class="col-sm-3">
                 <p>住所</p>
               </div>
-              <div class="col-sm-8">
-                <%= h.text_field :address, class:"col-sm-12", style:"padding:0;" %>
+              <div class="col-sm-9">
+                <%= f.text_field :address, class:"col-sm-12", style:"padding:0;" %>
               </div>
             </div>
+            <%# 都道府県 %>
             <div class="row">
-              <div class="col-sm-4">
+              <div class="col-sm-3">
                 <p>都道府県</p>
               </div>
               <div class="col-sm-4">
-                <%= h.text_field :prefecture_id %>
+                <div class="field">
+                  <%= f.label :都道府県 %><br>
+                  <%= f.select :prefecture_id, Prefecture.prefectures.keys, {prompt: '選択してください'} %>
+                </div>
               </div>
             </div>
+            <%# 値段 %>
             <div class="row">
-              <div class="col-sm-4">
+              <div class="col-sm-3">
                 <p>値段</p>
               </div>
               <div class="col-sm-1">
                 <p>大人</p>
               </div>
               <div class="col-sm-2">
-                <%= h.text_field :adult_price %>
+                <%= f.text_field :adult_price %>
               </div>
               <div class="col-sm-1">
                 <p>子供</p>
               </div>
               <div class="col-sm-2">
-                <%= h.text_field :child_price %>
+                <%= f.text_field :child_price %>
               </div>
             </div>
+            <%# 営業時間 %>
+            <div class="row">
+              <div class="col-sm-3 col-xs-4">
+                <p>営業時間</p>
+              </div>
+              <div class="col-sm-1 col-xs-1">
+                <p>開始</p>
+              </div>
+              <div class="col-sm-2 col-xs-2">
+                <%= f.text_field :start_time %>
+              </div>
+              <div class="col-sm-1 col-xs-1">
+                <p>終了</p>
+              </div>
+              <div class="col-sm-2 col-xs-2">
+                <%= f.text_field :ending_time %>
+              </div>
+            </div>
+            <%# 温泉種類 %>
+            <div class="row">
+              <div class="col-sm-3 col-xs-3">
+                <p>温泉の種類</p>
+              </div>
+              <div class="col-sm-3 col-xs-3">
+                <label><%= f.radio_button :type, "人工温泉" %> 人工温泉 </label>
+                <label><%= f.radio_button :type, "天然温泉" %> 天然温泉</label><br>
+              </div>
+            </div>
+            <%# 評価 %>
+            <div class="row">
+              <div class="col-sm-3 col-xs-3">
+                <p>温泉評価</p>
+              </div>
+              <div class="col-sm-3 col-xs-3">
+                <%= f.text_field :rate %>
+              </div>
+            </div>
+            <%# 備考 %>
+            <div class="row">
+              <div class="col-sm-3 col-xs-3">
+                <p>備考</p>
+              </div>
+              <div class="col-sm-12 col-xs-12">
+                <%= f.text_area :remarks, class:"col-sm-12", style:"padding:0;" %>
+              </div>
+            </div>
+            <%# レビュー %>
+            <div class="row">
+              <div class="col-sm-3 col-xs-3">
+                <p>レビュー</p>
+              </div>
+              <div class="col-sm-12 col-xs-12">
+                <%= f.text_area :review, class:"col-sm-12", style:"padding:0;" %>
+              </div>
+            </div>
+
+           
 
 
 
@@ -66,8 +130,9 @@
 
 
             
-
-            <%= h.submit %>
+          <div class="text-center">
+            <%= f.submit "投稿する", class:"btn btn-primary btn-lg" %>
+          </div>
           <% end %>
 
         </div>
