@@ -90,8 +90,8 @@
                 <p>温泉の種類</p>
               </div>
               <div class="col-sm-3 col-xs-3">
-                <label><%= f.radio_button :type, "人工温泉" %> 人工温泉 </label>
-                <label><%= f.radio_button :type, "天然温泉" %> 天然温泉</label><br>
+                <label><%= f.radio_button :hot_spring_status, "人工温泉" %> 人工温泉 </label>
+                <label><%= f.radio_button :hot_spring_status, "天然温泉" %> 天然温泉</label><br>
               </div>
             </div>
             <%# 評価 %>
@@ -121,14 +121,6 @@
                 <%= f.text_area :review, class:"col-sm-12", style:"padding:0;" %>
               </div>
             </div>
-
-           
-
-
-
-
-
-
             
           <div class="text-center">
             <%= f.submit "投稿する", class:"btn btn-primary btn-lg" %>
