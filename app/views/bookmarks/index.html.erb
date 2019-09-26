@@ -20,7 +20,7 @@
           <!--温泉写真-->
           <div class="col-xs-12 col-md-6">
             <div class="image-box">
-              <%= link_to hot_spring_path(h.id) do %>
+              <%= link_to hot_spring_path(h.hot_spring.id) do %>
                 <%= attachment_image_tag h.hot_spring, :image, :fill, 440, 200, :size=>"440x200" %>
               <% end %>
             </div>
@@ -29,7 +29,9 @@
           </div>
           <div class="col-xs-12 col-md-5">
             <!--温泉名-->
-            <h2><%= h.hot_spring.name %></h2>
+            <%= link_to hot_spring_path(h.hot_spring.id) do %>
+              <h2><%= h.hot_spring.name %></h2>
+            <% end %>
             <%# 都道府県名 %>
             <p><%= h.hot_spring.prefecture.name %></p>
             <%# 所在地 %>

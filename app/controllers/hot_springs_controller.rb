@@ -21,12 +21,19 @@ class HotSpringsController < ApplicationController
   end
 
   def edit
-  end
-
-  def destroy
+    @hot_spring = HotSpring.find(params[:id])
   end
 
   def update
+    @hot_spring = HotSpring.find(params[:id])
+    @hot_spring.update(hot_spring_params)
+    redirect_to hot_spring_path(@hot_spring.id)
+  end
+
+  def destroy
+    @hot_spring = HotSpring.find(params[:id])
+    @hot_spring.destroy
+    redirect_to root_path
   end
 
   private

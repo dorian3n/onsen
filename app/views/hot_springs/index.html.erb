@@ -32,7 +32,9 @@
           </div>
           <div class="col-xs-12 col-md-5">
             <!--温泉名-->
-            <h2><%= h.name %></h2>
+            <%= link_to hot_spring_path(h.id) do %>
+              <h2><%= h.name %></h2>
+            <% end %>
             <%# 都道府県名 %>
             <p><%= h.prefecture.name %></p>
             <%# 所在地 %>
