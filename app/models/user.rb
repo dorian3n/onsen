@@ -4,10 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :hot_springs
-  has_many :bookmarks
-  has_many :comments
-  has_many :follows
+  has_many :hot_springs, dependent: :destroy
+  has_many :bookmarks, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :follows, dependent: :destroy
 
-
+  attachment :image
 end

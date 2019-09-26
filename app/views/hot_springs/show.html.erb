@@ -1,2 +1,166 @@
-<h1>HotSprings#show</h1>
-<p>Find me in app/views/hot_springs/show.html.erb</p>
+<div class="container">
+  <div class="row">
+
+    <%# メニューバー %>
+    <%= render "/layouts/menubar"%>
+
+    <h2 style="margin-left:50px;">温泉詳細</h2>
+
+    <!--温泉詳細-->
+    <div class="hot-spring-box  clearfix">
+
+      <div class="col-xs-12 col-sm-8">
+        <div class="row">
+          <div class="col-xs-6 col-sm-6">
+            <%# 評価 %>
+            <p style="color:red;">総合評価(修正する)<%= @hot_spring.rate %></p>
+          </div>
+          <div class="col-xs-6 col-sm-6">
+            <%# 都道府県名 %>
+            <h3><p class="label label-warning pull-right"><%= @hot_spring.prefecture.name %></p></h3>
+          </div>
+        </div>
+
+        <div class="row">
+          <div>
+            <!--温泉写真-->
+            <%= attachment_image_tag @hot_spring, :image, class:"img-responsive" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-sm-4">
+        <div class="row">
+          <div class="col-xs-12">
+            <%# 投稿日 %>
+            <p class="pull-right"> <%= @hot_spring.user.nickname %>投稿日：<%= @hot_spring.created_at.strftime("%Y年%-m月%-d日") %></p>
+          </div>
+
+          <%# いいねアイコン %>
+          <div class="col-xs-12">
+            <ul>
+              <% if @hot_spring.favorited_by?(current_user) %>
+                <li>
+                  <%= link_to hot_spring_bookmarks_path(@hot_spring), method: :delete do %>
+                    <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+                    <%= @hot_spring.bookmarks.count %> いいね
+                  <% end %>
+                </li>
+              <% else %>
+                <li>
+                  <%= link_to hot_spring_bookmarks_path(@hot_spring), method: :post do %>
+                    <i class="fa fa-heart-o" aria-hidden="true"></i>
+                    <%= @hot_spring.bookmarks.count %> いいね
+                  <% end %>
+                </li>
+              <% end %>
+                <li>
+                  <%# コメントアイコン %>
+                  <span class="fa fa-comment"></span>
+                  <%= @hot_spring.comments.count %>
+                </li>
+            </ul>
+          </div>
+
+
+          <div class="col-xs-6">
+            <%# 投稿者評価 %>
+            <p style="color:red;" >投稿者評価：<%= @hot_spring.rate %></p>
+          </div>
+          <div class="col-xs-6">
+            <%# ユーザー評価 %>
+            <p style="color:red;">ユーザー評価：<%= @hot_spring.rate %></p>
+          </div>
+          <div class="col-xs-12">
+            <!--温泉名-->
+            <h2><%= @hot_spring.name %></h2>
+          </div>
+          <div class="col-xs-4 col-sm-12">
+            <%# 所在地 %>
+            <p>所在地：<%= @hot_spring.address %></p>
+          </div>
+          <div class="col-xs-4 col-sm-12">
+            <%# 営業時間 %>
+            <p>営業時間：<%= @hot_spring.start_time %>〜<%= @hot_spring.ending_time %></p>
+          </div>
+          <div class="col-xs-4 col-sm-12">
+            <%# 値段 %>
+            <p>値段：大人<%= @hot_spring.adult_price %>円、子供<%= @hot_spring.child_price %>円</p>
+          </div>
+          <div class="col-xs-4 col-sm-12">
+            <%# 種類 %>
+            <p>分類：<%= @hot_spring.hot_spring_status %></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-12">
+        <%# 備考 %>
+        <p>備考</p>
+        <div class="remark-box">
+          <%= @hot_spring.remarks %>
+        </div>
+      </div>
+      <div class="col-xs-12">
+        <%# レビュー %>
+        <p>レビュー</p>
+        <div class="review-box">
+          <%= @hot_spring.review %>
+        </div>
+      </div>
+    </div>
+
+
+    <%# コメント回数 %>
+    <div class="col-xs-12 comments">
+      <h4><%= @hot_spring.comments.count %>件コメント</h4>
+    </div>
+
+
+    <%# コメント機能 %>
+    <% @hot_spring.comments.each do |c| %>
+      <div class="col-xs-12 post-comments well well-lg">
+        <div class="row">
+          <div class="col-xs-12 col-sm-2 avatar">
+            <%# ユーザー写真 %>
+            <div class="col-xs-6">
+              <%= link_to user_path(c.user_id) do %>
+                <%= attachment_image_tag c.user, :image, :fill, 60, 60, fallback: "no_image.jpg" %>
+              <% end %>            
+            </div>
+
+            <div class="col-xs-6">
+              <%= link_to user_path(c.user_id) do %>
+                <%# ニックネーム %>
+                <%= c.user.nickname %>
+              <% end %>
+            </div>
+          
+          </div>
+          <%# ユーザー評価・投稿日時・投稿コメント表示 %>
+          <div class="col-xs-12 col-sm-10">
+            <p style="color:red;">ユーザー評価<%= c.hot_spring.rate %></p>
+            <%= c.created_at.strftime("%Y年%-m月%-d日") %><br>
+            <p class="user-comment"><%= c.comment  %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    
+    <hr>
+    <%# コメント投稿フォーム %>
+    <div class="post-comment">
+      <h3>コメントをする</h3>
+      <div class="col-xs-12">
+        <%= form_for [@hot_spring, @comment] do |f| %>
+          
+          <%= f.text_area :comment, rows:'5', class:"col-xs-12",placeholder: "コメントをここに" %>
+          <div class="text-center">
+            <%= f.submit "送信する", class: "btn btn-primary btn-lg", style:"margin-top:10px;" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+</div>

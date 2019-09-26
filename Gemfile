@@ -48,6 +48,12 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+
+
+  # あとで消す
+  gem 'pry-byebug'
+
+  
 end
 
 group :test do
@@ -74,3 +80,7 @@ gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
   # jQuery
 gem 'jquery-rails'
+  # Font Awesome
+gem "font-awesome-rails"
+  # kaminariを使用したページネーションにBootstrapデザインを適用
+gem 'kaminari-bootstrap', '~> 3.0.1'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_22_201710) do
+ActiveRecord::Schema.define(version: 2019_09_23_081640) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email"
@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 2019_09_22_201710) do
 
   create_table "prefectures", force: :cascade do |t|
     t.integer "hot_spring_id"
-    t.integer "prefecture"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

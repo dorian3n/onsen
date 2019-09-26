@@ -7,11 +7,13 @@ class HotSpringsController < ApplicationController
     @hot_spring = HotSpring.new(hot_spring_params)
     @hot_spring.user_id = current_user.id
     @hot_spring.save
+    # binding.pry
     redirect_to hot_springs_path
   end
 
   def show
     @hot_spring = HotSpring.find(params[:id])
+    @comment = Comment.new
   end
 
   def index

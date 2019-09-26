@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require font-awesome
  */
 
 //  bootstrap
@@ -49,50 +50,31 @@ body{
 	background-position: center;
 }
 
-// メニュー
+// メニューバー
 .nav-main{
 	margin-top:10px;
 	margin-bottom:20px;
 }
 
-li{
+.nav-justified li{
+	
+	border-right: 1px solid #FFE4C4;
 	background-color:#e9967a;
 	&:hover{
 		background-color:black;
 	}
 }
 
-
-.onsen-ranking{
+.sample_selecting{
 	color:black;
-	border-left: 1px solid #FFE4C4;
-	border-right: 1px solid #FFE4C4;
-	&:hover{
-		color:#B22222;
-	}
-}
-.user-ranking, .prefectures-search{
-	color:black;
-	border-right: 1px solid #FFE4C4;
 	&:hover{
 		color:#B22222;
 	}
 }
 
-.favorite{
-	color:black;
-	border-right: 1px solid #FFE4C4;
-	&:hover{
-		color:#B22222;
-	}
-}
+// メニューバーここまで
 
-// .user-ranking{
-// 	color:black;
-// 	&:hover{
-// 		color:#B22222;
-// 	}
-// }
+
 
 // フッター
 footer{

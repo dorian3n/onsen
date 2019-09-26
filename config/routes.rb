@@ -16,9 +16,10 @@ Rails.application.routes.draw do
   end
 
   resources :hot_springs do
-    resources :bookmarks, only: [:index, :create, :destroy]
+    resource :bookmarks, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy, :update]
   end
+  resources :bookmarks, only: [:index]
 
   resources :prefectures, only: [:new, :index]
 

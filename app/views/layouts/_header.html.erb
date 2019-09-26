@@ -9,6 +9,7 @@
     <!-- if -->
     <div class="login-status pull-right">
       <% if user_signed_in? %>
+        <%= link_to " マイページ", user_path(current_user.id), class:"header-sublink" %>
         <%= link_to " 温泉投稿", new_hot_spring_path, class:"header-sublink" %>
         <%= link_to " ログアウト", destroy_user_session_path, method: :delete, class:"header-sublink" %>
       <!-- else -->

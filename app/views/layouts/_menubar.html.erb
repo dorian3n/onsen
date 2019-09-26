@@ -2,20 +2,19 @@
 <%# メニューバー %>
 
   <nav class="nav-main">
-        <ul class="nav nav-justified">
-          <li>
-            <%= link_to '温泉ランキング', root_path, class: "onsen-ranking" %>
-          </li>
-          <li>
-            <%= link_to 'ユーザーランキング', root_path, class: "user-ranking" %>
-          </li>
-          <li>
-            <%= link_to '都道府県別温泉検索', root_path, class: "prefectures-search" %>
-          </li>
-          <li>
-            <%= link_to 'お気に入り', root_path, class: "favorite" %>
-          </li>
-        </ul>
+    <ul class="nav nav-justified">
+      <li>
+        <%= link_to '温泉ランキング', root_path, class: "sample_selecting" %>
+      </li>
+      <li>
+        <%= link_to 'ユーザーランキング', root_path, class: "sample_selecting" %>
+      </li>
+      <li>
+        <%= link_to '都道府県別温泉検索', root_path, class: "sample_selecting" %>
+      </li>
+      <li>
+        <%= link_to 'お気に入り', bookmarks_path, class: "sample_selecting" %>
+      </li>
+    </ul>
   </nav>
 
-<nav>

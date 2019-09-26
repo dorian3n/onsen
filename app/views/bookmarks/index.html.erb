@@ -1,2 +1,50 @@
-<h1>Bookmarks#index</h1>
-<p>Find me in app/views/bookmarks/index.html.erb</p>
+<div class="container">
+  <div class="row">
+
+    <%# メニューバー %>
+    <%= render "/layouts/menubar"%>
+
+    <h2 style="margin-left:50px;">お気に入り温泉</h2>
+
+    <%# 温泉一覧 %>
+    <% @bookmarks.each do |h| %>
+      <div class="hot-spring-box  clearfix">
+        <div class="well well-lg col-xs-12 col-md-12">
+          <div class="col-xs-12 col-md-12">
+            <%# 投稿日 %>
+            <h4 style="font-weight:bold;color:darkgreen;">投稿日：<%= h.hot_spring.created_at.strftime("%Y年%-m月%-d日") %></h4>
+
+            <%# 評価 %>
+            <p>総合評価<%= h.hot_spring.rate %></p>
+          </div>
+          <!--温泉写真-->
+          <div class="col-xs-12 col-md-6">
+            <div class="image-box">
+              <%= link_to hot_spring_path(h.id) do %>
+                <%= attachment_image_tag h.hot_spring, :image, :fill, 440, 200, :size=>"440x200" %>
+              <% end %>
+            </div>
+          </div>
+          <div class="col-md-1">
+          </div>
+          <div class="col-xs-12 col-md-5">
+            <!--温泉名-->
+            <h2><%= h.hot_spring.name %></h2>
+            <%# 都道府県名 %>
+            <p><%= h.hot_spring.prefecture.name %></p>
+            <%# 所在地 %>
+            <p>所在地：<%= h.hot_spring.address %></p>
+            <%# 営業時間 %>
+            <p>営業時間：<%= h.hot_spring.start_time %>〜<%= h.hot_spring.ending_time %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class = "row">
+    <div class = "col-sm-12">
+      <%# KAMINARI実装 %>
+      <%= paginate @bookmarks %>
+    </div>
+  </div>
+</div>
