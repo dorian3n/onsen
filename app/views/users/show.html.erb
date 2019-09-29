@@ -1,35 +1,32 @@
-<%= render "/layouts/menubar"%>
-  <div class="container">
-    <div class="row">
-<!-- sidebar  ここまで -->
+<div class="container">
+  <div class="row">
+    <!-- メニューバー -->
+    <%= render "/layouts/menubar"%>
+
+    <div class="col-xs-8 col-xs-offset-2 well well-lg">
+      <% if @user.nickname.nil? %>
+        <h2><%= @user.name %>さんのページ</h2>
+      <% else %>
+        <h2><%= @user.nickname %>さんのページ</h2>
+      <% end %>
 
 
-      <div class="col-xs-8 col-xs-offset-2">
-        <% if @user.nickname.nil? %>
-          <h2><%= @user.name %>さんのページ</h2>
-        <% else %>
-          <h2><%= @user.nickname %>さんのページ</h2>
-        <% end %>
-
-
-        <div class="row">
-          <div class="col-xs-4">
-            <%= attachment_image_tag @user, :image, :fill, 200, 200, :size=>"200x200", fallback: "/images/no_image.jpg" %>
-          </div>
-          <div class="col-xs-1">
-          </div>
-          <div class="col-xs-7">
-	          <h3 style="margin-top:80px;"><%= @user.address %>/<%= @user.sex %>/<%= @user.age %></h3>
-            
-            <%# 編集ボタン %>
-            <% if @user.id == current_user.id %>
-              <p><%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-default pull-right",style: "margin-top:80px;" %></p>
-            <% end %>
-          </div>
-
-
-
+      <div class="row">
+        <div class="col-xs-4">
+          <%= attachment_image_tag @user, :image, :fill, 200, 200, :size=>"200x200", fallback: "/images/no_image.jpg" %>
         </div>
+        <div class="col-xs-1">
+        </div>
+        <div class="col-xs-7">
+          <h3 style="margin-top:80px;"><%= @user.address %>/<%= @user.sex %>/<%= @user.age %></h3>
+          
+          <%# 編集ボタン %>
+          <% if @user.id == current_user.id %>
+            <p><%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-default pull-right",style: "margin-top:80px;" %></p>
+          <% end %>
+        </div>
+
       </div>
     </div>
   </div>
+</div>

@@ -15,7 +15,7 @@
             <h4 style="font-weight:bold;color:darkgreen;">投稿日：<%= h.hot_spring.created_at.strftime("%Y年%-m月%-d日") %></h4>
 
             <%# 評価 %>
-            <p style="color:red;">総合評価：<%= h.hot_spring.total_rate.round(1) %></p>
+            <h3><strong style="color:red;">総合評価：<%= h.hot_spring.total_rate.round(1) %></strong></h3>
           </div>
           <!--温泉写真-->
           <div class="col-xs-12 col-md-6">
@@ -30,10 +30,10 @@
           <div class="col-xs-12 col-md-5">
             <!--温泉名-->
             <%= link_to hot_spring_path(h.hot_spring.id) do %>
-              <h2><%= h.hot_spring.name %></h2>
+              <h2><strong><%= h.hot_spring.name %></h2></strong>
             <% end %>
             <%# 都道府県名 %>
-            <p><%= h.hot_spring.prefecture.name %></p>
+            <h3><p class="label label-warning" ><%= h.hot_spring.prefecture.name %></p></h3>
             <%# 所在地 %>
             <p>所在地：<%= h.hot_spring.address %></p>
             <%# 営業時間 %>
