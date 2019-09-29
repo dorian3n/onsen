@@ -146,7 +146,7 @@
             <%# ユーザー写真 %>
             <div class="col-xs-12">
               <%= link_to user_path(c.user_id) do %>
-                <%= attachment_image_tag c.user, :image, :fill, 60, 60, fallback: "no_image.jpg" %>
+                <%= attachment_image_tag c.user, :image, :fill, 60, 60, fallback: "/images/no_image.jpg" %>
               <% end %>            
             </div>
 
