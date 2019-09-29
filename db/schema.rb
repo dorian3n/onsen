@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_23_081640) do
+ActiveRecord::Schema.define(version: 2019_09_29_055948) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2019_09_23_081640) do
   create_table "comments", force: :cascade do |t|
     t.integer "user_id"
     t.integer "hot_spring_id"
-    t.string "rate"
+    t.integer "rate"
     t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 2019_09_23_081640) do
     t.string "name"
     t.string "address"
     t.string "hot_spring_status"
-    t.string "rate"
+    t.integer "rate"
     t.string "image_id"
     t.text "remarks"
     t.text "review"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 2019_09_23_081640) do
     t.integer "child_price"
     t.integer "start_time"
     t.integer "ending_time"
+    t.float "total_rate"
   end
 
   create_table "prefectures", force: :cascade do |t|
@@ -74,7 +75,7 @@ ActiveRecord::Schema.define(version: 2019_09_23_081640) do
     t.datetime "remember_created_at"
     t.string "name"
     t.string "nickname"
-    t.string "address"
+    t.integer "address"
     t.integer "age"
     t.string "sex"
     t.string "image_id"

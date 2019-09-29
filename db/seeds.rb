@@ -3,8 +3,8 @@
 #
 # Examples:
 #
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+#   movies = Movie.create([{ address: 'Star Wars' }, { address: 'Lord of the Rings' }])
+#   Character.create(address: 'Luke', movie: movies.first)
 Prefecture.create!(
   [{ :name => "北海道" },
   { :name => "青森県" },

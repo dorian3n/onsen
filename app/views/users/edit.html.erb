@@ -1,2 +1,72 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<%# プロフィール編集 %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+
+      <div class="form-user">
+        <div class="form-header text-center">
+          <h3 class="form-header-title">プロフィール編集</h3>
+        </div>
+        <div class="form-body clearfix well well-lg">
+          <div class="col-sm-9 col-sm-offset-1">
+
+            <div class="box">
+              <%= form_for @user do |f| %>
+
+                <div class="row form-group">
+                  <div class="col-sm-3"><%= f.label :ユーザー名 %></div>
+                  <div class="col-sm-9"><%= f.text_field :name, autofocus: true, class:"form-control", disabled: true %>
+                  <em>ユーザー名は変更できません</em></div>
+                </div>
+
+                <div class="row form-group">
+                  <div class="col-sm-3"><%= f.label :ニックネーム %></div>
+                  <div class="col-sm-9"><%= f.text_field :nickname, autofocus: true, class:"form-control" %></div>
+                </div>
+
+                <div class="row form-group">
+                  <div class="col-sm-3"><%= f.label :メールアドレス %></div>
+                  <div class="col-sm-9"><%= f.email_field :email, class:"form-control" %></div>
+                </div>
+
+                <div class="row form-group">
+                  <div class="col-sm-3"><%= f.label :県名 %></div>
+                  <div class="col-sm-9">
+                    <%= f.select :address, User.addresses.keys, {}, {class: 'hoge'} %> 
+                  </div>
+                </div>
+
+
+            <div class="row form-group">
+                  <div class="col-sm-3"><%= f.label :年齢 %>
+                  </div>
+                  <div class="col-sm-9">
+                    <%= f.select :age, User.ages.keys, {}, {class: 'hoge'} %> 
+                  </div>
+                </div>
+    
+                    
+                <div class="row form-group">
+                  <div class="col-sm-3"><%= f.label :性別 %></div>
+                  <div class="col-sm-9"><label><%= f.radio_button :sex, "男" %> 男 </label>
+                  <label><%= f.radio_button :sex, "女" %> 女</label></div>
+                </div>
+
+                <div class="form-group text-center">
+                  <%= f.submit "更新する", class:"btn btn-primary btn-block" %>
+                </div>
+
+
+              <% end %>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+           

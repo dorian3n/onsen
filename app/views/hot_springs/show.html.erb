@@ -3,7 +3,9 @@
 
     <%# メニューバー %>
     <%= render "/layouts/menubar"%>
-
+      <% if flash[:notice] %>
+        <p><%= flash[:notice] %></p>
+      <% end %>
     <h2 style="margin-left:50px;">温泉詳細</h2>
 
     <%# 投稿者削除 %>
@@ -23,7 +25,9 @@
         <div class="row">
           <div class="col-xs-6 col-sm-6">
             <%# 評価 %>
-            <p style="color:red;">総合評価(修正する)<%= @hot_spring.rate %></p>
+            <p style="color:red;">
+              総合評価：<%= @hot_spring.total_rate.round(1) %>
+            </p>
           </div>
           <div class="col-xs-6 col-sm-6">
             <%# 都道府県名 %>
@@ -41,9 +45,21 @@
 
       <div class="col-xs-12 col-sm-4">
         <div class="row">
-          <div class="col-xs-12">
+          <div class="col-xs-5">
+            投稿者名
+            <% if @hot_spring.user.nickname.nil? %>
+              <%= link_to user_path(@hot_spring.user.id) do %>
+                <%= @hot_spring.user.name %>
+              <% end %>
+            <% else %>
+              <%= link_to user_path(@hot_spring.user.id) do %>
+                <%= @hot_spring.user.nickname %>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="col-xs-6 col-xs-offset-1">
             <%# 投稿日 %>
-            <p class="pull-right"> <%= @hot_spring.user.nickname %>投稿日：<%= @hot_spring.created_at.strftime("%Y年%-m月%-d日") %></p>
+            <p class="pull-right">投稿日：<%= @hot_spring.created_at.strftime("%Y年%-m月%-d日") %></p>
           </div>
 
           <%# いいねアイコン %>
@@ -73,7 +89,7 @@
           </div>
           <div class="col-xs-6">
             <%# ユーザー評価 %>
-            <p style="color:red;">ユーザー評価：<%= @hot_spring.rate %></p>
+            <p style="color:red;">ユーザー評価：<%= @user_rates %></p>
           </div>
           <div class="col-xs-12">
             <!--温泉名-->
@@ -128,13 +144,13 @@
         <div class="row">
           <div class="col-xs-12 col-sm-2 avatar">
             <%# ユーザー写真 %>
-            <div class="col-xs-6">
+            <div class="col-xs-12">
               <%= link_to user_path(c.user_id) do %>
                 <%= attachment_image_tag c.user, :image, :fill, 60, 60, fallback: "no_image.jpg" %>
               <% end %>            
             </div>
 
-            <div class="col-xs-6">
+            <div class="col-xs-12">
               <%= link_to user_path(c.user_id) do %>
                 <%# ニックネーム %>
                 <%= c.user.nickname %>
@@ -144,7 +160,7 @@
           </div>
           <%# ユーザー評価・投稿日時・投稿コメント表示 %>
           <div class="col-xs-12 col-sm-10">
-            <p style="color:red;">ユーザー評価<%= c.hot_spring.rate %></p>
+            <p style="color:red;">ユーザー評価：<%= c.rate %></p>
             <%= c.created_at.strftime("%Y年%-m月%-d日") %><br>
             <p class="user-comment"><%= c.comment  %></p>
           </div>
@@ -152,14 +168,16 @@
       </div>
     <% end %>
     
-    <hr>
+
     <%# コメント投稿フォーム %>
-    <div class="post-comment">
+    <div class="comment-do">
       <h3>コメントをする</h3>
+      <em>　コメントは一回までしかできません。</em>
+      
       <div class="col-xs-12">
         <%= form_for [@hot_spring, @comment] do |f| %>
-          
-          <%= f.text_area :comment, rows:'5', class:"col-xs-12",placeholder: "コメントをここに" %>
+          <p style="margin-top:20px;">温泉評価<%= f.select :rate,  [["1",1], ["2",2], ["3",3], ["4",4], ["5",5]], {}, {class: 'hoge'} %> </p>
+          <p><%= f.text_area :comment, rows:'5', class:"col-xs-12",placeholder: "コメントをここに" %></p>
           <div class="text-center">
             <%= f.submit "送信する", class: "btn btn-primary btn-lg", style:"margin-top:10px;" %>
           </div>

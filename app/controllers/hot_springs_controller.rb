@@ -6,14 +6,31 @@ class HotSpringsController < ApplicationController
   def create
     @hot_spring = HotSpring.new(hot_spring_params)
     @hot_spring.user_id = current_user.id
+    @hot_spring.total_rate = @hot_spring.rate
     @hot_spring.save
-    # binding.pry
     redirect_to hot_springs_path
   end
 
   def show
     @hot_spring = HotSpring.find(params[:id])
     @comment = Comment.new
+    if @hot_spring.comments.any?
+      @user_rates = @hot_spring.comments.average(:rate).round(1)
+    else
+      @user_rates = 0
+      @hot_spring.total_rate=@hot_spring.rate
+    end
+    #   sum=0
+    #   @hot_spring.comments.each do |comment|
+    #     sum+=comment.rate
+    #   end
+    #   @users_rate=sum/(@hot_spring.comments.count).to_f
+    #   @hot_spring.total_rate=((@users_rate+@hot_spring.rate)/2).to_f
+    # else
+    #   @users_rate = 0
+    #   @hot_spring.total_rate=@hot_spring.rate
+    # end
+   
   end
 
   def index
