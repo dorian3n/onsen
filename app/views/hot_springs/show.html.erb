@@ -25,9 +25,9 @@
         <div class="row">
           <div class="col-xs-6 col-sm-6">
             <%# 評価 %>
-            <p style="color:red;">
+            <h3><strong style="color:red;">
               総合評価：<%= @hot_spring.total_rate.round(1) %>
-            </p>
+            </strong></h3>
           </div>
           <div class="col-xs-6 col-sm-6">
             <%# 都道府県名 %>
@@ -85,15 +85,15 @@
 
           <div class="col-xs-6">
             <%# 投稿者評価 %>
-            <p style="color:red;" >投稿者評価：<%= @hot_spring.rate %></p>
+            <strong style="color:red;" >投稿者評価：<%= @hot_spring.rate %></strong>
           </div>
           <div class="col-xs-6">
             <%# ユーザー評価 %>
-            <p style="color:red;">ユーザー評価：<%= @user_rates %></p>
+            <strong style="color:red;">ユーザー評価：<%= @user_rates %></strong>
           </div>
           <div class="col-xs-12">
             <!--温泉名-->
-            <h2><%= @hot_spring.name %></h2>
+            <h2><strong><%= @hot_spring.name %></h2></strong>
           </div>
           <div class="col-xs-4 col-sm-12">
             <%# 所在地 %>
@@ -146,7 +146,7 @@
             <%# ユーザー写真 %>
             <div class="col-xs-12">
               <%= link_to user_path(c.user_id) do %>
-                <%= attachment_image_tag c.user, :image, :fill, 60, 60, fallback: "no_image.jpg" %>
+                <%= attachment_image_tag c.user, :image, :fill, 60, 60, fallback: "/images/no_image.jpg" %>
               <% end %>            
             </div>
 
@@ -160,7 +160,7 @@
           </div>
           <%# ユーザー評価・投稿日時・投稿コメント表示 %>
           <div class="col-xs-12 col-sm-10">
-            <p style="color:red;">ユーザー評価：<%= c.rate %></p>
+            <strong style="color:red;">ユーザー評価：<%= c.rate %></strong><br>
             <%= c.created_at.strftime("%Y年%-m月%-d日") %><br>
             <p class="user-comment"><%= c.comment  %></p>
           </div>
@@ -172,7 +172,7 @@
     <%# コメント投稿フォーム %>
     <div class="comment-do">
       <h3>コメントをする</h3>
-      <em>　コメントは一回までしかできません。</em>
+      <em>　温泉評価とコメントは投稿された温泉に対して１回できます。 </em>
       
       <div class="col-xs-12">
         <%= form_for [@hot_spring, @comment] do |f| %>

@@ -14,6 +14,11 @@
               <%= form_for @user do |f| %>
 
                 <div class="row form-group">
+                  <div class="col-sm-3"><%= f.label :ユーザー写真 %></div>
+                  <div class="col-sm-9"><%= f.attachment_field :image %></div>
+                </div>
+
+                <div class="row form-group">
                   <div class="col-sm-3"><%= f.label :ユーザー名 %></div>
                   <div class="col-sm-9"><%= f.text_field :name, autofocus: true, class:"form-control", disabled: true %>
                   <em>ユーザー名は変更できません</em></div>
