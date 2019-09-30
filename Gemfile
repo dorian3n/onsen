@@ -51,7 +51,7 @@ group :development do
 
 
   # あとで消す
-  # gem 'pry-byebug'
+  gem 'pry-byebug'
 
   
 end
