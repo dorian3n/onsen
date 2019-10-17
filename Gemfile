@@ -84,3 +84,5 @@ gem 'jquery-rails'
 gem "font-awesome-rails"
   # kaminariを使用したページネーションにBootstrapデザインを適用
 gem 'kaminari-bootstrap', '~> 3.0.1'
+  # 検索フォーム
+gem 'ransack'
