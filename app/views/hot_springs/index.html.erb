@@ -1,30 +1,17 @@
 <div class="container">
     <div class="row">
         <%# 背景画像表示 %>
-        <div class="main-image">
-        </div>
+        <% if params[:q].present? && params[:q][:name_cont].present? %>
+        <% else %>
+            <div class="main-image"></div>
+        <% end %>
 
         <%# メニューバー %>
         <%= render "/layouts/menubar"%>
 
-        <%# `form_for`のRansack版 %>
-        <div class="col-xs-6">
-            <%= search_form_for @search do |f| %>
-                <div class="input-group">
-                    <%# nameカラムに対して部分一致検索ができる %>
-                    <%= f.search_field :name_cont, class: "form-control", placeholder: "温泉名で検索" %>
-
-                <div class="input-group-btn">
-                    <%# 検索ボタン %>
-                    <%= f.submit "検索", class: "btn btn-primary" %>
-                </div>
-                </div>
-            <% end %>
-        </div><br>
-
         <%# 検索ワードが空欄以外の時に表示 %>
         <% if params[:q].present? && params[:q][:name_cont].present? %>
-            <h2 style="margin-left:50px;">キーワード：’<%= params[:q][:name_cont] %>’での検索結果 <%= @result.total_count %>件</h2>
+            <h2 style="margin-left:50px;">’<%= params[:q][:name_cont] %>’の検索結果 <%= @result.total_count %>件</h2>
         <% else %>
             <h2 style="margin-left:50px;">新着温泉:<%= @hot_springs.total_count %>件</h2>
         <% end %>

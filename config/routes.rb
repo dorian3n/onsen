@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
 
+  get 'hot_springs/ranking'
   devise_for :users, controllers: {
     sessions:      'users/sessions',
     passwords:     'users/passwords',
@@ -19,6 +20,8 @@ Rails.application.routes.draw do
     resource :bookmarks, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy, :update]
   end
+
+  
   resources :bookmarks, only: [:index]
 
   resources :prefectures, only: [:new, :index]

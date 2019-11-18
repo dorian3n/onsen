@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
-
+  before_action :search
 
 
 
@@ -19,6 +19,11 @@ class ApplicationController < ActionController::Base
       ])
   end
 
+
+  def search
+        # 検索オブジェクト
+        @search = HotSpring.ransack(params[:q])
+  end
 
 
 

@@ -1,8 +1,9 @@
 class BookmarksController < ApplicationController
 
+  before_action :authenticate_user!
 
   def index
-    @bookmarks = current_user.bookmarks.page(params[:page]).per(5).order(created_at: :desc)
+    @bookmarks = current_user.bookmarks.page(params[:page]).per(5).order("updated_at DESC")
   end
 
   def create
