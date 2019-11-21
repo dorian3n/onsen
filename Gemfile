@@ -74,15 +74,16 @@ gem 'devise-i18n'
 gem 'devise-i18n-views'
   # Sass：「Syntactically Awesome Style Sheets」の略。Ruby ベース
 gem 'bootstrap-sass','~>3.3.6'
-gem 'jquery-rails'
   # 画像関連gem
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
   # jQuery
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
   # Font Awesome
 gem "font-awesome-rails"
   # kaminariを使用したページネーションにBootstrapデザインを適用
 gem 'kaminari-bootstrap', '~> 3.0.1'
   # 検索フォーム
 gem 'ransack'
+  # 日本地図
+gem 'jcanvas-rails', '~> 0.1.0'

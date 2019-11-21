@@ -1,4 +1,7 @@
 class HotSpringsController < ApplicationController
+
+    before_action :authenticate_user!, only: [:show]
+
     def new
         @hot_spring = HotSpring.new
     end
@@ -34,11 +37,13 @@ class HotSpringsController < ApplicationController
     end
 
     def index
-        # 検索オブジェクト
-        @search = HotSpring.ransack(params[:q])
-        # 検索結果
         @result = @search.result(distinct: true).page(params[:page]).per(5).order(created_at: "DESC")
         @hot_springs = HotSpring.page(params[:page]).per(5).order(created_at: "DESC")
+        
+    end
+
+    def ranking
+        @ranking = HotSpring.page(params[:page]).per(5).order(total_rate: "DESC")
     end
 
     def edit
