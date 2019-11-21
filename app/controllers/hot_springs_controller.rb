@@ -39,6 +39,7 @@ class HotSpringsController < ApplicationController
     def index
         @result = @search.result(distinct: true).page(params[:page]).per(5).order(created_at: "DESC")
         @hot_springs = HotSpring.page(params[:page]).per(5).order(created_at: "DESC")
+        
     end
 
     def ranking
