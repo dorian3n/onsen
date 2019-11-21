@@ -73,7 +73,7 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
   # Sass：「Syntactically Awesome Style Sheets」の略。Ruby ベース
-gem 'bootstrap-sass','~>3.3.6'
+gem 'bootstrap-sass','~>3.4.1'
   # 画像関連gem
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
