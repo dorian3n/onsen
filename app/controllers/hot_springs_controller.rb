@@ -44,6 +44,7 @@ class HotSpringsController < ApplicationController
 
     def ranking
         @ranking = HotSpring.page(params[:page]).per(5).order(total_rate: "DESC")
+
     end
 
     def edit
