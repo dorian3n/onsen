@@ -33,7 +33,7 @@
                             <!--温泉写真-->
                             <div class="col-xs-12 col-md-6">
                                 <div class="image-box">
-                                    <%= attachment_image_tag result, :image, :fill, 440, 200, :size=>"440x200" %>
+                                    <%= attachment_image_tag result, :image, :fill, 440, 200, fallback: "no_image",:size=>"440x200" %>
                                 </div>
                             </div>
                             <div class="col-xs-12 col-md-5 col-md-offset-1">
@@ -45,7 +45,7 @@
                                 <%# 所在地 %>
                                 <p>所在地：<%= result.address %></p>
                                 <%# 営業時間 %>
-                                <p>営業時間：<%= result.start_time %>〜<%= result.ending_time %></p>
+                                <p>営業時間：<%= result.start_hours %>:<%= result.start_minutes %>〜<%= result.end_hours %>:<%= result.end_minutes %></p>
                             </div>
                         </div>
                     <% end %>
@@ -89,7 +89,7 @@
                                 <%# 所在地 %>
                                 <p>所在地：<%= h.address %></p>
                                 <%# 営業時間 %>
-                                <p>営業時間：<%= h.start_time %>〜<%= h.ending_time %></p>
+                                <p>営業時間：<%= h.start_hours %>:<%= h.start_minutes %>〜<%= h.end_hours %>:<%= h.end_minutes %></p>
                             </div>
                         </div>
                     <% end %>

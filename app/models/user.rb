@@ -12,6 +12,15 @@ class User < ApplicationRecord
   attachment :image
 
 
+  # ユーザー名
+  validates :name, presence: true, uniqueness: true, length: { in: 2..12}
+  # メールアドレス => 空欄だめ、【***@***.***】の形で入力　例:aaa@aa.a　uniqueness: trueはメールアドレスの重複を防ぐ
+  # VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email, presence: true, uniqueness: true
+
+
+
+
   enum address:{
     北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,
     茨城県:8,栃木県:9,群馬県:10,埼玉県:11,千葉県:12,東京都:13,神奈川県:14,

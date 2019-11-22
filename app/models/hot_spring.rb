@@ -9,19 +9,19 @@ class HotSpring < ApplicationRecord
   
   attachment :image
 
-  # validates :user_id, presence: true
-  # validates :prefecture_id, presence: true
-  # validates :name, presence: true
-  # validates :address, presence: true
-  # validates :hot_spring_status, presence: true
-  # validates :rate, presence: true
-  # validates :image_id, presence: true
-  # validates :remarks, presence: true
-  # validates :review, presence: true
-  # validates :adult_price, presence: true
-  # validates :child_price, presence: true
-  # validates :start_time, presence: true
-  # validates :ending_time, presence: true
+
+  # 温泉名
+  validates :name, presence: true, length: { in: 2..12}
+  # 住所
+  validates :address, presence: true, length: { in: 2..40}
+  # 大人の値段
+  validates :adult_price, presence: true, length: { in: 1..7}
+  # 温泉の種類
+  validates :hot_spring_status, presence: true
+
+
+
+
 
   # 評価
   # enum rate:{

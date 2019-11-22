@@ -38,7 +38,7 @@
         <div class="row">
           <div>
             <!--温泉写真-->
-            <%= attachment_image_tag @hot_spring, :image, class:"img-responsive" %>
+            <%= attachment_image_tag @hot_spring, :image, :fill, 720, 380, fallback: "no_image",:size=>"720x380" %>
           </div>
         </div>
       </div>
@@ -101,11 +101,15 @@
           </div>
           <div class="col-xs-4 col-sm-12">
             <%# 営業時間 %>
-            <p>営業時間：<%= @hot_spring.start_time %>〜<%= @hot_spring.ending_time %></p>
+            <p>営業時間：<%= @hot_spring.start_hours %>:<%= @hot_spring.start_minutes %>〜<%= @hot_spring.end_hours %>:<%= @hot_spring.end_minutes %></p>
           </div>
           <div class="col-xs-4 col-sm-12">
             <%# 値段 %>
-            <p>値段：大人<%= @hot_spring.adult_price %>円、子供<%= @hot_spring.child_price %>円</p>
+            <p>値段：大人<%= @hot_spring.adult_price %>円
+            <% if @hot_spring.child_price.nil? %>
+            <% else %>
+            、子供<%= @hot_spring.child_price %>円</p>
+            <% end %>
           </div>
           <div class="col-xs-4 col-sm-12">
             <%# 種類 %>

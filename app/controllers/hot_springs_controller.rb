@@ -10,8 +10,11 @@ class HotSpringsController < ApplicationController
         @hot_spring = HotSpring.new(hot_spring_params)
         @hot_spring.user_id = current_user.id
         @hot_spring.total_rate = @hot_spring.rate
-        @hot_spring.save
-        redirect_to hot_springs_path
+        if @hot_spring.save
+            redirect_to hot_springs_path #成功の場合
+        else        
+            render 'new' #失敗の場合 
+        end
     end
 
     def show
@@ -65,7 +68,7 @@ class HotSpringsController < ApplicationController
 
     private
     def hot_spring_params
-        params.require(:hot_spring).permit(:prefecture_id, :name, :address, :hot_spring_status, :rate, :image, :remarks, :review, :adult_price, :child_price, :start_time, :ending_time)
+        params.require(:hot_spring).permit(:prefecture_id, :name, :address, :hot_spring_status, :rate, :image, :remarks, :review, :adult_price, :child_price, :start_hours, :start_minutes, :end_hours, :end_minutes,)
     end
 end
 
