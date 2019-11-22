@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_29_055948) do
+ActiveRecord::Schema.define(version: 2019_11_22_071748) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email"
@@ -58,6 +58,10 @@ ActiveRecord::Schema.define(version: 2019_09_29_055948) do
     t.integer "start_time"
     t.integer "ending_time"
     t.float "total_rate"
+    t.string "start_hours"
+    t.string "start_minutes"
+    t.string "end_hours"
+    t.string "end_minutes"
   end
 
   create_table "prefectures", force: :cascade do |t|

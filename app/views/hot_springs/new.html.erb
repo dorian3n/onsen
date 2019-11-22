@@ -56,10 +56,10 @@
                 <%= f.label :値段 %>
               </div>
               <div class="col-sm-4">
-                <p>大人<%= f.text_field :adult_price %></p>
+                <p>大人<%= f.text_field :adult_price %>円</p>
               </div>
               <div class="col-sm-4">
-                <p>子供<%= f.text_field :child_price %></p>
+                <p>子供<%= f.text_field :child_price %>円</p>
               </div>
             </div>
             <%# 営業時間 %>
@@ -68,10 +68,10 @@
                 <%= f.label :営業時間 %>
               </div>
               <div class="col-sm-4">
-                <p>開始<%= f.text_field :start_time %>
+                <p>開始<%= f.text_field :start_hours, :size=>"10" %>:<%= f.text_field :start_minutes, :size=>"10" %>
               </div>
               <div class="col-sm-4">
-                <p>終了<%= f.text_field :ending_time %></p>
+                <p>終了<%= f.text_field :end_hours, :size=>"10" %>:<%= f.text_field :end_minutes, :size=>"10" %></p>
               </div>
             </div>
             <%# 温泉種類 %>

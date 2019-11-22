@@ -43,7 +43,6 @@
               </div>
               <div class="col-sm-4">
                 <div class="field">
-                  <%= f.label :都道府県 %><br>
                   <%#= f.select :prefecture_id, Prefecture.prefectures.keys, {prompt: '選択してください'} %>
                   <%= f.select :prefecture_id, Prefecture.all.map { |prefecture| [prefecture.name, prefecture.id] }, {prompt: '選択してください'}  %>
                 </div>
@@ -58,13 +57,13 @@
                 <p>大人</p>
               </div>
               <div class="col-sm-2">
-                <%= f.text_field :adult_price %>
+                <%= f.text_field :adult_price, :size=>"7" %>円
               </div>
               <div class="col-sm-1">
                 <p>子供</p>
               </div>
               <div class="col-sm-2">
-                <%= f.text_field :child_price %>
+                <%= f.text_field :child_price, :size=>"7" %>円
               </div>
             </div>
             <%# 営業時間 %>
@@ -76,13 +75,13 @@
                 <p>開始</p>
               </div>
               <div class="col-xs-2">
-                <%= f.text_field :start_time %>
+                <%= f.text_field :start_hours, :size=>"7" %>:<%= f.text_field :start_minutes, :size=>"7" %>
               </div>
               <div class="col-xs-1">
                 <p>終了</p>
               </div>
               <div class="col-xs-2">
-                <%= f.text_field :ending_time %>
+                <%= f.text_field :end_hours, :size=>"7" %>:<%= f.text_field :end_minutes, :size=>"7" %>
               </div>
             </div>
             <%# 温泉種類 %>
