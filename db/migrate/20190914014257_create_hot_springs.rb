@@ -1,6 +1,6 @@
 class CreateHotSprings < ActiveRecord::Migration[5.2]
   def change
-    create_table :hot_springs do |t|
+    create_table :hot_springs, :options => 'ENGINE=InnoDB ROW_FORMAT=DYNAMIC' do |t|
       t.integer :user_id
       t.integer :prefecture_id
       t.string :name
